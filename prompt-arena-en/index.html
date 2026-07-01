@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt Engineering Battle Arena - Software School</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <span class="logo-icon">⚡</span>
+            <h1>Prompt Battle Arena</h1>
+        </div>
+        <div class="header-actions">
+            <div class="status-badge" id="api-status">
+                <div class="status-dot"></div>
+                <span id="api-status-text">Simulation Mode Active</span>
+            </div>
+            <button class="btn-secondary" id="open-settings-btn">⚙️ API Settings</button>
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main>
+        <!-- Left Side: Task Selection and Prompt Editor -->
+        <section class="left-column">
+            <!-- Task Info Card -->
+            <div class="card task-card">
+                <div class="card-header">
+                    <span class="card-title">
+                        <span class="card-title-icon">📋</span> Active Task
+                    </span>
+                    <span class="status-badge" id="task-difficulty" style="background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.2); color: var(--accent-green);">Easy</span>
+                </div>
+                
+                <div class="tabs-container">
+                    <button class="tab-btn active" data-task="0">1. Emoji Summary</button>
+                    <button class="tab-btn" data-task="1">2. JSON Parsing</button>
+                    <button class="tab-btn" data-task="2">3. Jailbreak Attack</button>
+                </div>
+
+                <div class="task-description" id="task-desc-container">
+                    <!-- Dynamic task description injected by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Editor Card -->
+            <div class="card editor-card">
+                <div class="editor-header">
+                    <span class="card-title">
+                        <span class="card-title-icon">✍️</span> Prompt Development Editor
+                    </span>
+                    <input type="text" class="student-name-input" id="student-name" placeholder="Student Full Name" value="Alice SMITH">
+                </div>
+
+                <div class="textarea-container">
+                    <textarea id="prompt-input" placeholder="Type your system and user instructions (prompt) here to send to the AI..."></textarea>
+                </div>
+
+                <div class="editor-footer">
+                    <span class="char-counter" id="char-count">0 characters | 0 words</span>
+                    <button class="btn-primary" id="run-prompt-btn">🚀 Battle Prompt!</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Side: Evaluation Metrics and Leaderboard -->
+        <section class="right-column">
+            <!-- Evaluation Results Card -->
+            <div class="card evaluation-card">
+                <div class="card-header">
+                    <span class="card-title">
+                        <span class="card-title-icon">📊</span> Evaluation &amp; Scoring
+                    </span>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-box">
+                        <span class="metric-label">Total Success Score</span>
+                        <span class="metric-value metric-score" id="total-score">- / 100</span>
+                    </div>
+                    <div class="metric-box">
+                        <span class="metric-label">Prompt Efficiency</span>
+                        <span class="metric-value metric-efficiency" id="prompt-efficiency">-</span>
+                    </div>
+                </div>
+
+                <div class="verification-checklist" id="checklist-container">
+                    <!-- Dynamic checklist checks injected by JavaScript -->
+                </div>
+
+                <div class="output-console" id="console-output">
+                    <span class="console-placeholder">AI response and evaluation analysis will be simulated here...</span>
+                </div>
+            </div>
+
+            <!-- Leaderboard Card -->
+            <div class="card leaderboard-card">
+                <div class="card-header">
+                    <span class="card-title">
+                        <span class="card-title-icon">🏆</span> Live Leaderboard
+                    </span>
+                </div>
+
+                <div class="leaderboard-list" id="leaderboard-container">
+                    <!-- Dynamic leaderboard list injected by JavaScript -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Settings Modal -->
+    <div class="modal-overlay" id="settings-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <span class="modal-title">⚙️ API &amp; Battle Settings</span>
+                <button class="close-modal" id="close-settings-btn">&times;</button>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label" for="api-mode-select">Execution Mode</label>
+                <select class="form-input" id="api-mode-select" style="background-color: #1e293b; color: white;">
+                    <option value="simulated">Simulation Mode (No API Key Required)</option>
+                    <option value="gemini">Real Gemini API Mode</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="api-key-group" style="display: none;">
+                <label class="form-label" for="gemini-api-key">Gemini API Key</label>
+                <input type="password" class="form-input" id="gemini-api-key" placeholder="AIzaSy...">
+                <span class="form-help">Your API key is saved locally in your browser (localStorage) and sent directly to Google servers. It is never stored on any server.</span>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn-danger" id="clear-leaderboard-btn" style="margin-right: auto;">🗑️ Reset Scores</button>
+                <button class="btn-secondary" id="cancel-settings-btn">Cancel</button>
+                <button class="btn-primary" id="save-settings-btn">Save Settings</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
